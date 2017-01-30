@@ -39,7 +39,7 @@ public class WorldEditWrapper {
         return this.we != null;
     }
 
-    public ClipboardHolder copySchematic(Player player, File file) {
+    public LocalSession copySchematic(Player player, File file) {
         com.sk89q.worldedit.entity.Player wePlayer = this.getPlayer(player);
         WorldData worldData = wePlayer.getWorld().getWorldData();
         LocalSession session = this.we.getSession(player);
@@ -71,18 +71,25 @@ public class WorldEditWrapper {
         ClipboardHolder holder = new ClipboardHolder(clipboard, worldData);
         session.setClipboard(holder);
 
-        return holder;
+        return session;
     }
 
     @SuppressWarnings("deprecation")
     public void pasteSchematic(Player player, File file, Vector location) {
         com.sk89q.worldedit.entity.Player wePlayer = this.getPlayer(player);
-        EditSession session = this.we.getSession(player).createEditSession(wePlayer);
 
         // Move the tree above the block
         location = location.add(0, 1, 0);
 
-        ClipboardHolder clipboard = this.copySchematic(player, file);
+        LocalSession session = this.copySchematic(player, file);
+        ClipboardHolder clipboard;
+        try {
+            clipboard = session.getClipboard();
+        } catch(EmptyClipboardException e) {
+            e.printStackTrace();
+            return;
+        }
+        EditSession editSession = session.createEditSession(wePlayer);
 
         // Randomly rotate the tree for variety
         // If random is 2, rotate is 180 etc
@@ -91,7 +98,7 @@ public class WorldEditWrapper {
         transform = transform.rotateY(rotate);
         clipboard.setTransform(clipboard.getTransform().combine(transform));
 
-        Operation operation = clipboard.createPaste(session, wePlayer.getWorld().getWorldData())
+        Operation operation = clipboard.createPaste(editSession, wePlayer.getWorld().getWorldData())
             .ignoreAirBlocks(true)
             .to(location)
             .build();
