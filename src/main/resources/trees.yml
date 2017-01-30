@@ -1,0 +1,46 @@
+groups:
+  african:
+    - code: AFR1L
+      name: "Grandidier's Baobab Fullgrown"
+      description: "An imposing and unusual tree from Madagascar. Birch wood, spruce leaves, 31 blocks"
+    - code: AFR1S
+      name: "Grandidier's Baobab Halfgrown"
+      description: "An imposing and unusual tree from Madagascar. Birch wood, spruce leaves, 15 blocks"
+    - code: AFR2L
+      name: "African Baobab Fullgrown"
+      description: "Large tree known for the trunk's girth. Oak and birch wood, spruce leaves, 28 blocks"
+    - code: AFR2S
+      name: "African Baobab Halfgrown"
+      description: "Large tree known for the trunk's girth. Oak and birch wood, spruce leaves, 15 blocks"
+    - code: AFR3L
+      name: "Buffalo Thorn Fullgrown"
+      description: "Medium sized tree with distinctive zigzag branchlets. Oak wood, oak leaves, 10 blocks"
+    - code: AFR3S
+      name: "Buffalo Thorn Halfgrown"
+      description: "Small tree with distinctive zigzag branchlets. Oak wood, oak leaves, 6 blocks"
+    - code: AFR4L
+      name: "Bushwillow Fullgrown"
+      description: "Widespread, fairly common tree. Oak wood, oak leaves, 11 blocks"
+    - code: AFR4S
+      name: "Bushwillow Halfgrown"
+      description: "Widespread, fairly common shrub. Oak wood, oak leaves, 5 blocks"
+    - code: AFR5L
+      name: "Jackalberry Fullgrown"
+      description: "Large birch tree with branches high above the ground. Birch wood, birch leaves, 25 blocks"
+    - code: AFR5S
+      name: "Jackalberry Halfgrown"
+      description: "Medium birch tree with branches high above the ground. Birch wood, birch leaves, 14 blocks"
+    - code: AFR6L
+      name: "Knobthorn Fullgrown"
+      description: "Large deciduous tree often browsed by giraffes. Oak wood, oak leaves, 19 blocks"
+    - code: AFR6S
+      description: "Medium deciduous tree often browsed by giraffes. Oak wood, oak leaves, 12 blocks"
+    - code: AFR7L
+      name: "Marula Fullgrown"
+      description: "Single stemmed tree with a wide spreading crown. Spruce wood, oak leaves, 19 blocks"
+    - code: AFR7S
+      name: "Marula Halfgrown"
+      description: "Single stemmed tree with a wide spreading crown. Spruce wood, oak leaves, 11 blocks"
+    - code: AFR8L
+      name: "Mopane Fullgrown"
+      description: "Spreads upwards in a narrow V-formation with a wide-spreading, flat crown. Oak wood, spruce leaves, 16 blocks"

@@ -1,0 +1,14 @@
+name: TreeRepository
+main: com.boveybrawlers.TreeRepository.TreeRepository
+version: 1.0.0
+depend: [WorldEdit]
+commands:
+  treerepo:
+    description: Main command for TreeRepository
+    usage: /treerepo
+  tr:
+    description: Shorthand command for TreeRepository
+    usage: /tr
+  trees:
+    descrition: Alias for listing all TreeRepository trees
+    usage: /trees
