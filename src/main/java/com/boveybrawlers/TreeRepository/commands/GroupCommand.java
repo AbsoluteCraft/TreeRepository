@@ -41,8 +41,8 @@ public class GroupCommand implements CommandExecutor {
             Pagination pagination = Pagination.parseArgs(args, 2, perPage, group.getList().size());
 
             String page = "";
-            if(pagination.hasPages()) {
-                page = ChatColor.DARK_GREEN + "Page: " + ChatColor.WHITE + pagination.getPage();
+            if(pagination.hasNextPage()) {
+                page = ChatColor.DARK_GREEN + " Page: " + ChatColor.WHITE + pagination.getPage();
             }
             player.sendMessage(ChatColor.DARK_GREEN + "Group: " + ChatColor.GRAY + group.getNiceName() + page);
 

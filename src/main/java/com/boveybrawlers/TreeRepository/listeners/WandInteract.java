@@ -69,6 +69,7 @@ public class WandInteract implements Listener {
                 }
 
                 if(planter != null) {
+                    event.setCancelled(true);
                     planter.actPrimary(vector);
                 }
             }

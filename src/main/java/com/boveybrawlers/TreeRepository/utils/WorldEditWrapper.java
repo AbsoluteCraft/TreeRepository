@@ -39,6 +39,13 @@ public class WorldEditWrapper {
         return this.we != null;
     }
 
+    /**
+     * Copies a schematic file to a player's clipboard
+     *
+     * @param player The player who actioned the edit
+     * @param file The schematic file of the tree
+     * @return LocalSession
+     */
     public LocalSession copySchematic(Player player, File file) {
         com.sk89q.worldedit.entity.Player wePlayer = this.getPlayer(player);
         WorldData worldData = wePlayer.getWorld().getWorldData();
@@ -74,8 +81,15 @@ public class WorldEditWrapper {
         return session;
     }
 
+    /**
+     * Paste a schematic file at a location
+     * @param player The player who has actioned the edit
+     * @param file The schematic file of the tree
+     * @param location The vector location of the paste
+     * @param roots How many blocks of roots under the ground the tree has
+     */
     @SuppressWarnings("deprecation")
-    public void pasteSchematic(Player player, File file, Vector location) {
+    public void pasteSchematic(Player player, File file, Vector location, Integer roots) {
         com.sk89q.worldedit.entity.Player wePlayer = this.getPlayer(player);
 
         // Move the tree above the block
@@ -108,6 +122,8 @@ public class WorldEditWrapper {
         } catch(WorldEditException e) {
             e.printStackTrace();
         }
+
+        session.remember(editSession);
     }
 
     public com.sk89q.worldedit.entity.Player getPlayer(Player player) {

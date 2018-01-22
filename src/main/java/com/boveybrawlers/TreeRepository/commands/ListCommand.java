@@ -43,7 +43,7 @@ public class ListCommand implements CommandExecutor {
         Pagination pagination = Pagination.parseArgs(args, argIndex, perPage, groups.size());
 
         String page = "";
-        if(pagination.hasPages()) {
+        if(pagination.hasNextPage()) {
             page = ChatColor.DARK_GREEN + " Page: " + ChatColor.WHITE + pagination.getPage();
         }
         player.sendMessage("Available tree groups: " + ChatColor.DARK_GRAY + "(Click to view)" + page);

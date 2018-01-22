@@ -18,7 +18,9 @@ public class SingleTreePlanter implements IPlanter {
     }
 
     public void actPrimary(Vector location) {
-        this.plugin.worldedit.pasteSchematic(this.player, this.tree.getSchematic(), location);
+        Integer roots = this.tree.getRoots();
+
+        this.plugin.worldedit.pasteSchematic(this.player, this.tree.getSchematic(), location, roots);
     }
 
 }

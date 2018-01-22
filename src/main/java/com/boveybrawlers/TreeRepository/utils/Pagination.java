@@ -17,8 +17,8 @@ public class Pagination {
     public Pagination(int page, int perPage, int listSize) {
         this.page = page;
         this.perPage = perPage;
-        this.from = page * perPage;
-        this.to = page * perPage + perPage;
+        this.from = page * perPage - perPage;
+        this.to = page * perPage - 1;
         this.listSize = listSize;
     }
 
@@ -35,7 +35,7 @@ public class Pagination {
         return this.page;
     }
 
-    public boolean hasPages() {
+    public boolean hasNextPage() {
         return this.listSize > this.page * this.perPage;
     }
 
@@ -52,7 +52,7 @@ public class Pagination {
         TextComponent actionNext = new TextComponent("[Next ->]");
 
         prevCmd = prevCmd.replace("{prev}", this.page - 1 + "");
-        prevCmd = prevCmd.replace("{next}", this.page + 1 + "");
+        nextCmd = nextCmd.replace("{next}", this.page + 1 + "");
 
         if(this.page > 1) {
             actionPrev.setColor(ChatColor.WHITE);
@@ -62,7 +62,7 @@ public class Pagination {
             actionPrev.setColor(net.md_5.bungee.api.ChatColor.DARK_GRAY);
         }
 
-        if(this.hasPages()) {
+        if(this.hasNextPage()) {
             actionNext.setColor(ChatColor.WHITE);
             actionNext.setClickEvent(new ClickEvent(ClickEvent.Action.RUN_COMMAND, nextCmd));
             actionNext.setHoverEvent(new HoverEvent(HoverEvent.Action.SHOW_TEXT, new ComponentBuilder("Go to the next page").create()));
