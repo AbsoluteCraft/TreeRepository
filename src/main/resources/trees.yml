@@ -3,7 +3,6 @@ groups:
     - code: AFR1L
       name: "Grandidier's Baobab Fullgrown"
       description: "An imposing and unusual tree from Madagascar. Birch wood, spruce leaves, 31 blocks"
-      roots: 0
     - code: AFR1S
       name: "Grandidier's Baobab Halfgrown"
       description: "An imposing and unusual tree from Madagascar. Birch wood, spruce leaves, 15 blocks"

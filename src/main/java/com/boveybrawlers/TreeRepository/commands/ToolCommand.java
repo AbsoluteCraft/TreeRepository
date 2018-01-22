@@ -58,17 +58,11 @@ public class ToolCommand implements CommandExecutor {
             wand.setItemMeta(meta);
 
             player.getInventory().addItem(wand);
-        } else {
-            if(player.hasMetadata(ToolCommand.toolType) && player.hasMetadata(ToolCommand.toolCode)) {
-                player.removeMetadata(ToolCommand.toolType, this.plugin);
-                player.removeMetadata(ToolCommand.toolCode, this.plugin);
 
-                player.sendMessage(ChatColor.DARK_AQUA + "Tree tool unbound from wooden hoe");
-            } else {
-                player.performCommand("treerepo help");
-            }
+            return true;
         }
 
+        player.sendMessage(ChatColor.RED + "Usage: /tr tool [code]");
         return true;
     }
 

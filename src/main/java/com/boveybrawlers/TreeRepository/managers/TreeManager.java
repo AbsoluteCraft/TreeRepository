@@ -7,7 +7,6 @@ import org.apache.commons.io.FileUtils;
 import org.bukkit.configuration.ConfigurationSection;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.configuration.file.YamlConfiguration;
-import org.bukkit.util.FileUtil;
 
 import java.io.File;
 import java.io.IOException;
@@ -27,8 +26,10 @@ public class TreeManager {
     public TreeManager(TreeRepository plugin) {
         this.plugin = plugin;
 
+        String schematicsDir = "schematics";
+
         // Try to create the schematic directory when we start
-        String directory = this.plugin.getDataFolder() + File.separator + "schematics";
+        String directory = this.plugin.getDataFolder() + File.separator + schematicsDir;
         File schematicDir = new File(directory);
         if(!schematicDir.exists()) {
             boolean mkdirs = schematicDir.mkdirs();
@@ -68,15 +69,27 @@ public class TreeManager {
                     return;
                 }
 
-                Tree tree = new Tree(directory, code, name, description);
+                Tree tree = new Tree(directory, group, code, name, description);
                 Integer roots = (Integer) treeMap.get("roots");
                 if(roots != null) {
                     tree.setRoots(roots);
                 }
 
-                // Copy the tree to the plugin's schematics folder if it doesn't exist
+                // Check the tree's schematic exists at plugins/TreeRepository/{group}/{code}.schematic
                 if(!tree.getSchematic().exists()) {
-                    FileUtil.copy(tree.getSchematic(), new File(this.plugin.getDataFolder() + File.separator + "schematics", tree.getCode() + ".schematic"));
+                    // The tree doesn't exist so let's see if it exists in our resources
+                    InputStream is = this.plugin.getResource(schematicsDir + File.separator + tree.getFilePath());
+                    if(is != null) {
+                        try {
+                            FileUtils.copyInputStreamToFile(is, tree.getSchematic());
+                        } catch(IOException e) {
+                            e.printStackTrace();
+                            // Don't add the tree
+                            return;
+                        }
+                    } else {
+                        return;
+                    }
                 }
 
                 group.add(tree);

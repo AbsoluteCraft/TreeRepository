@@ -25,7 +25,11 @@ public class Pagination {
     public static Pagination parseArgs(String[] args, int argIndex, int perPage, int listSize) {
         int page = 1;
         if(args.length > argIndex) {
-            page = Integer.parseInt(args[argIndex]);
+            try {
+                page = Integer.parseInt(args[argIndex]);
+            } catch(NumberFormatException ex) {
+                return null;
+            }
         }
 
         return new Pagination(page, perPage, listSize);

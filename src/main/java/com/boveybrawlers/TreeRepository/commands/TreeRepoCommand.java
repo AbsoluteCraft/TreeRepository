@@ -31,8 +31,6 @@ public class TreeRepoCommand implements CommandExecutor {
         subCommands.put("list", new ListCommand(this.plugin));
         subCommands.put("tool", new ToolCommand(this.plugin));
 
-        // TODO: Command to build a temporary collection of trees to use in a tool
-
         if(args.length > 0) {
             CommandExecutor executor = subCommands.get(args[0].toLowerCase());
             if(executor == null) {

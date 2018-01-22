@@ -37,7 +37,8 @@ public class CopyCommand implements CommandExecutor {
             return true;
         }
 
-        return false;
+        player.sendMessage(ChatColor.RED + "Usage: /tr copy [code]");
+        return true;
     }
 
 }

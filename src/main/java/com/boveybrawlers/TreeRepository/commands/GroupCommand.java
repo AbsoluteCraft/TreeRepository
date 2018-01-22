@@ -38,7 +38,12 @@ public class GroupCommand implements CommandExecutor {
             }
 
             int perPage = 4;
+            // page argument is at index 2 after group and [name]
             Pagination pagination = Pagination.parseArgs(args, 2, perPage, group.getList().size());
+            if(pagination == null) {
+                player.sendMessage(ChatColor.RED + "Usage: /tr group [name] (page)");
+                return true;
+            }
 
             String page = "";
             if(pagination.hasNextPage()) {
@@ -92,7 +97,8 @@ public class GroupCommand implements CommandExecutor {
             return true;
         }
 
-        return false;
+        player.sendMessage(ChatColor.RED + "Usage: /tr group [name] (page)");
+        return true;
     }
 
 }

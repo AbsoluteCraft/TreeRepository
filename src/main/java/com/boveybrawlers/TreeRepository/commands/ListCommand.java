@@ -41,6 +41,10 @@ public class ListCommand implements CommandExecutor {
 
         int perPage = 10;
         Pagination pagination = Pagination.parseArgs(args, argIndex, perPage, groups.size());
+        if(pagination == null) {
+            player.sendMessage(ChatColor.RED + "Usage: /tr list (page)");
+            return true;
+        }
 
         String page = "";
         if(pagination.hasNextPage()) {
